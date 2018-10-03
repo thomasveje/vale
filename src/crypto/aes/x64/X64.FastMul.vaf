@@ -133,13 +133,6 @@ procedure fast_multiply(
 //    simple_helper(a0, b0, b1, d0, a0b0_hi, a0b1_lo, r11, r10, overflow(efl));
 //    assert a0b0b1 == a0 * (b0 + pow2_64 * b1); // FAILS:
 
-    assert (buffer64_read (dst_b, 0, mem) +
-            pow2_64  * buffer64_read (dst_b, 1, mem) +
-            (pow2_128 * r11 +
-             pow2_128 * (if overflow(efl) then 1 else 0))
-                ==
-            a0 * b0 +
-            pow2_64 * (a0 * b1));
 
     assert_by_tactic(a0b0b1 == a0 * (b0 + pow2_64 * b1), int_canon); // FAILS:
     // user tactic failed: apply_lemma: Cannot instantiate lemma CanonCommSemiring.semiring_reflect CanonCommSemiring.const_last
