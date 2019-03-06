@@ -50,7 +50,7 @@ RUN chmod +x build.sh
 COPY --chown=everest build_helper.sh ${MYHOME}/build_helper.sh
 RUN chmod +x build_helper.sh
 
-RUN if [ "$TARGET" != "LOCAL" ] ; then ./build_helper.sh ${TARGET} ${BUILDLOGFILE} ${MAXTHREADS} ${BRANCHNAME} || true ; fi
+RUN ./build_helper.sh ${TARGET} ${BUILDLOGFILE} ${MAXTHREADS} ${BRANCHNAME} || true
 
 # Remove ssh identities.
 RUN rm ${MYHOME}/.ssh/id_rsa
