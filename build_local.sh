@@ -23,7 +23,7 @@ DEPFILES=$(jq -c -r ".DependencyFiles[]" "$FILE")
 cp -r $DEPFILES .
 
 PROJECTNAME=$(jq -c -r ".ProjectName" "$FILE" | awk '{print tolower($0)}')
-BUILDTARGET=$(jq -c -r ".CIBuildTarget" "$FILE")
+BUILDTARGET=LOCAL
 LOCALBRANCHNAME=$(git branch | grep \* | cut -d ' ' -f2)
 
 #Find commit id.

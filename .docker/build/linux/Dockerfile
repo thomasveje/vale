@@ -46,10 +46,12 @@ RUN rm vale/commitinfofilename.json
 
 COPY --chown=everest build.sh ${MYHOME}/build.sh
 RUN chmod +x build.sh
+
 COPY --chown=everest build_helper.sh ${MYHOME}/build_helper.sh
 RUN chmod +x build_helper.sh
 
-RUN ./build_helper.sh ${TARGET} ${BUILDLOGFILE} ${MAXTHREADS} ${BRANCHNAME} || true
+RUN if [ "$TARGET" != "LOCAL" ] ; then ./build_helper.sh ${TARGET} ${BUILDLOGFILE} ${MAXTHREADS} ${BRANCHNAME} || true ; fi
 
 # Remove ssh identities.
 RUN rm ${MYHOME}/.ssh/id_rsa
+

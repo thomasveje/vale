@@ -6,6 +6,7 @@ threads=$3
 branchname=$4
 
 export FSTAR_HOME=$(pwd)/FStar
+export Z3_HOME=$(pwd)/everest/z3
 
 # Add ssh identity
 eval $(ssh-agent)
